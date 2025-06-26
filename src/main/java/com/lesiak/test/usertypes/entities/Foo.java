@@ -15,31 +15,33 @@ import static jakarta.persistence.FetchType.EAGER;
 @Table(name = "foos")
 public class Foo {
 
+//    @Id
+//    @Type(FooIdUserType.class)
+//    private FooId fooId;
     @Id
-    @Type(FooIdUserType.class)
-    private FooId fooId;
+    private String fooId;
 
     @Column(name = "name") // Define the column name
     private String name;
 
     @OneToOne(mappedBy = "foo", fetch = EAGER, orphanRemoval = true, cascade = ALL)
-    private FooProgress fooProgress;
+    private FooProgress progress;
 
     // No-arg constructor required by JPA
     public Foo() {
     }
 
-    public Foo(FooId fooId, String name, FooProgress fooProgress) {
+    public Foo(String fooId, String name, FooProgress progress) {
         this.fooId = fooId;
         this.name = name;
-        this.fooProgress = fooProgress;
+        this.progress = progress;
     }
 
-    public FooId getFooId() {
+    public String getFooId() {
         return fooId;
     }
 
-    public void setFooId(FooId id) {
+    public void setFooId(String id) {
         this.fooId = id;
     }
 
@@ -51,12 +53,12 @@ public class Foo {
         this.name = name;
     }
 
-    public FooProgress getFooProgress() {
-        return fooProgress;
+    public FooProgress getProgress() {
+        return progress;
     }
 
-    public void setFooProgress(FooProgress fooProgress) {
-        this.fooProgress = fooProgress;
+    public void setProgress(FooProgress fooProgress) {
+        this.progress = fooProgress;
         if (fooProgress != null) {
             fooProgress.setFoo(this);
         }

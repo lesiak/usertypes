@@ -10,8 +10,9 @@ import org.hibernate.annotations.Type;
 public class FooProgress {
 
     @Id
-    @Type(FooIdUserType.class)
-    private FooId fooId;
+    //@Type(FooIdUserType.class)
+    //private FooId fooId;
+    private String fooId;
 
     @Column(name = "name") // Define the column name
     private String name;
@@ -25,17 +26,17 @@ public class FooProgress {
     public FooProgress() {
     }
 
-    public FooProgress(FooId id, String name, Foo foo) {
+    public FooProgress(String id, String name, Foo foo) {
         this.fooId = id;
         this.name = name;
         this.foo = foo;
     }
 
-    public FooId getFooId() {
+    public String getFooId() {
         return fooId;
     }
 
-    public void setFooId(FooId fooId) {
+    public void setFooId(String fooId) {
         this.fooId = fooId;
     }
 

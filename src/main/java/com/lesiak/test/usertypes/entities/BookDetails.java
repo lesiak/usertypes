@@ -29,7 +29,8 @@ public class BookDetails {
     public BookDetails() {
     }
 
-    public BookDetails(String summary, Integer numberOfPages) {
+    public BookDetails(Long id, String summary, Integer numberOfPages) {
+        this.id = id;
         this.summary = summary;
         this.numberOfPages = numberOfPages;
     }
