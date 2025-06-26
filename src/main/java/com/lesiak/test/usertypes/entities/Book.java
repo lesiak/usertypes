@@ -11,7 +11,6 @@ import static jakarta.persistence.FetchType.LAZY; // Often LAZY is preferred for
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
@@ -24,7 +23,8 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String author) {
+    public Book(Long id, String title, String author) {
+        this.id = id;
         this.title = title;
         this.author = author;
     }

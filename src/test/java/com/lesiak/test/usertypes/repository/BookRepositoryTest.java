@@ -22,8 +22,8 @@ public class BookRepositoryTest {
 
     @Test
     void aaa() {
-        Book book1 = new Book("t1", "a1");
-        Book book2 = new Book("t2", "a2");
+        Book book1 = new Book(1L, "t1", "a1");
+        Book book2 = new Book(2L, "t2", "a2");
 
         BookDetails bookDetails1 = new BookDetails("sum1", 100);
         BookDetails bookDetails2 = new BookDetails("sum2", 200);
