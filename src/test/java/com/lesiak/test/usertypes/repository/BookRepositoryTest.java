@@ -40,7 +40,7 @@ public class BookRepositoryTest {
 
     void aaa(Foo foo) {
         System.out.println("Foo: " + foo);
-        System.out.println("Foo Progress: " + foo.getProgress());
+       // System.out.println("Foo Progress: " + foo.getProgress());
     }
         // This method is intentionally left empty.
         // It can be used for further testing or assertions if needed.

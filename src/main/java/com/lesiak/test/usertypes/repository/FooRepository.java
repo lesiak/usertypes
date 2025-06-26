@@ -1,6 +1,10 @@
 package com.lesiak.test.usertypes.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.lesiak.test.usertypes.entities.Foo;
@@ -15,4 +19,5 @@ public interface FooRepository extends JpaRepository<Foo, FooId> {
     // Spring Data JPA automatically provides common CRUD operations.
     // You can add custom query methods here if needed, e.g.:
     // List<Foo> findByName(String name);
+
 }
