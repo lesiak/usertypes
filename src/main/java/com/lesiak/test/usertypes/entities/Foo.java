@@ -25,7 +25,7 @@ public class Foo {
 
     @Id
     //@Type(FooIdUserType.class)
-    @Convert(converter = FooIdConverter.class) //
+    //@Convert(converter = FooIdConverter.class, disableConversion=true) //
     private FooId fooId;
 
     @Column(name = "name") // Define the column name
