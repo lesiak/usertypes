@@ -12,6 +12,8 @@ import java.util.Objects;
 
 
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.type.descriptor.converter.spi.BasicValueConverter;
+import org.hibernate.type.descriptor.java.JavaType;
 import org.hibernate.usertype.EnhancedUserType;
 
 
@@ -92,4 +94,9 @@ public class FooIdUserType implements EnhancedUserType<FooId> {
     public FooId fromStringValue(CharSequence sequence) throws HibernateException {
         return new FooId(sequence.toString());
     }
+
+//    @Override
+//    public BasicValueConverter<FooId, Object> getValueConverter() {
+//        return EnhancedUserType.super.getValueConverter();
+//    }
 }
