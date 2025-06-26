@@ -7,12 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class FooId implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String id;
+    private final String id;
 
+    @Override
+    public String toString() {
+        return id;
+    }
 }
