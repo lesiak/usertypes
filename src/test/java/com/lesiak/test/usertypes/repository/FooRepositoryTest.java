@@ -8,7 +8,6 @@ import com.lesiak.test.usertypes.config.DatasourceProxyBeanPostProcessor;
 import com.lesiak.test.usertypes.entities.Foo;
 import com.lesiak.test.usertypes.entities.FooId;
 import com.lesiak.test.usertypes.entities.FooProgress;
-import io.zonky.test.db.AutoConfigureEmbeddedDatabase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -19,7 +18,8 @@ import org.springframework.test.context.transaction.TestTransaction;
 
 @DataJpaTest
 @Import(DatasourceProxyBeanPostProcessor.class)
-@AutoConfigureEmbeddedDatabase(type =  AutoConfigureEmbeddedDatabase.DatabaseType.POSTGRES, provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.ZONKY)
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+@ContextConfiguration(classes = {EmbeddedPostgresConfiguration.class})
 public class FooRepositoryTest {
 
 
