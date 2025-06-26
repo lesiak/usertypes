@@ -33,33 +33,14 @@ public class FooRepositoryTest {
     @Autowired
     private FooRepository fooRepository;
 
-    @Autowired
-    private FooProgressRepository fooProgressRepository;
-
-    //EmbeddedPostgres postgres;
-
-//    @BeforeEach
-//    void setUpPostgres() throws Exception {
-//        postgres = EmbeddedPostgres.start();
-//
-//    }
-//
-//    @AfterEach
-//    void stopPostgres() throws Exception {
-//        postgres.close();
-//    }
-
     @Test
     @Transactional
     void aaa() throws Exception {
-        Thread.sleep(10000);
+
         var fooId1 = new FooId("1");
         var fooId2 = new FooId("2");
-        //var fooId1 = "foo1";
-        //var fooId2 = "foo2";
-        FooProgress fooProgress1 = new FooProgress("p1", "foo1Progress", null);
-        FooProgress fooProgress2 = new FooProgress("p2", "foo2Progress", null);
-
+        var fooProgress1 = new FooProgress("p1", "foo1Progress", null);
+        var fooProgress2 = new FooProgress("p2", "foo2Progress", null);
 
         var foo1 = new Foo(fooId1, "foo1");
         var foo2 = new Foo(fooId2, "foo2");
@@ -76,17 +57,7 @@ public class FooRepositoryTest {
         TestTransaction.start();
 
         List<Foo> all = fooRepository.findAll();
-       // var f1Result = all.get(0);
-       // Assertions.assertEquals(fooProgress1, f1Result.getProgress());
-        all.forEach(this::aaa);
-        //fooProgressRepository.findAll().forEach(System.out::println);
-        fooRepository.deleteAll();
+        all.forEach(System.out::println);
     }
 
-    void aaa(Foo foo) {
-        System.out.println("Foo: " + foo);
-        System.out.println("Foo Progress: " + foo.getProgressEntities());
-    }
-        // This method is intentionally left empty.
-        // It can be used for further testing or assertions if needed.
 }

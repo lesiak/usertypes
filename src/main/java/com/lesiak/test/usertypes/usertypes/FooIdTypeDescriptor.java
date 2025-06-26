@@ -19,7 +19,7 @@ public class FooIdTypeDescriptor extends AbstractClassJavaType<FooId> {
         if (value == null) {
             return null;
         } else if (String.class.isAssignableFrom(type)) {
-            return (X)value.getValue();
+            return (X)value.getId();
         } else {
             throw this.unknownUnwrap(type);
         }
