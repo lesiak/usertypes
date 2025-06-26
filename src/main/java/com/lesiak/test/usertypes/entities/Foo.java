@@ -14,7 +14,7 @@ public class Foo {
 
     @Id
     @Type(FooIdUserType.class)
-    private FooId id;
+    private FooId fooId;
 
     @Column(name = "name") // Define the column name
     private String name;
@@ -23,17 +23,17 @@ public class Foo {
     public Foo() {
     }
 
-    public Foo(FooId id, String name) {
-        this.id = id;
+    public Foo(FooId fooId, String name) {
+        this.fooId = fooId;
         this.name = name;
     }
 
-    public FooId getId() {
-        return id;
+    public FooId getFooId() {
+        return fooId;
     }
 
-    public void setId(FooId id) {
-        this.id = id;
+    public void setFooId(FooId id) {
+        this.fooId = id;
     }
 
     public String getName() {
@@ -47,7 +47,7 @@ public class Foo {
     @Override
     public String toString() {
         return "Foo{" +
-               "id=" + id +
+               "id=" + fooId +
                ", name='" + name + '\'' +
                '}';
     }

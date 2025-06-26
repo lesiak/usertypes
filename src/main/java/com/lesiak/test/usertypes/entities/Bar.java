@@ -14,7 +14,7 @@ public class Bar {
 
     @Id
     @Type(BarIdUserType.class)
-    private BarId id;
+    private BarId barId;
 
     @Column(name = "name") // Define the column name
     private String name;
@@ -24,16 +24,16 @@ public class Bar {
     }
 
     public Bar(BarId id, String name) {
-        this.id = id;
+        this.barId = id;
         this.name = name;
     }
 
-    public BarId getId() {
-        return id;
+    public BarId getBarId() {
+        return barId;
     }
 
-    public void setId(BarId id) {
-        this.id = id;
+    public void setBarId(BarId barId) {
+        this.barId = barId;
     }
 
     public String getName() {
@@ -47,7 +47,7 @@ public class Bar {
     @Override
     public String toString() {
         return "Bar{" +
-               "id=" + id +
+               "barId=" + barId +
                ", name='" + name + '\'' +
                '}';
     }
