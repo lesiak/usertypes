@@ -5,12 +5,9 @@ import jakarta.persistence.*;
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
 import org.hibernate.annotations.Type;
 
-/**
- * Entity class for Bar, using BarId as its key.
- */
 @Entity
-@Table(name = "bars")
-public class Bar {
+@Table(name = "foo_progress")
+public class FooProgress {
 
     @Id
     @Type(FooIdUserType.class)
@@ -19,13 +16,19 @@ public class Bar {
     @Column(name = "name") // Define the column name
     private String name;
 
+    @OneToOne(optional = false)
+    @MapsId("fooId")
+   // @JoinColumn(name = "foo_id")
+    private Foo foo;
+
     // No-arg constructor required by JPA
-    public Bar() {
+    public FooProgress() {
     }
 
-    public Bar(FooId id, String name) {
+    public FooProgress(FooId id, String name, Foo foo) {
         this.fooId = id;
         this.name = name;
+        this.foo = foo;
     }
 
     public FooId getFooId() {
@@ -44,9 +47,17 @@ public class Bar {
         this.name = name;
     }
 
+    public Foo getFoo() {
+        return foo;
+    }
+
+    public void setFoo(Foo foo) {
+        this.foo = foo;
+    }
+
     @Override
     public String toString() {
-        return "Bar{" +
+        return "FooProgress{" +
                "fooId=" + fooId +
                ", name='" + name + '\'' +
                '}';

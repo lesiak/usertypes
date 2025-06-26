@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
 import org.hibernate.annotations.Type;
 
+import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.FetchType.EAGER;
+
 /**
  * Entity class for Foo, using FooId as its embedded key.
  */
@@ -19,18 +22,17 @@ public class Foo {
     @Column(name = "name") // Define the column name
     private String name;
 
-    @OneToOne(optional = false)
-    @MapsId("bundleId")
-    @JoinColumn(name = "bundleid")
-    private Bar bar;
+    @OneToOne(mappedBy = "foo", fetch = EAGER, orphanRemoval = true, cascade = ALL)
+    private FooProgress fooProgress;
 
     // No-arg constructor required by JPA
     public Foo() {
     }
 
-    public Foo(FooId fooId, String name) {
+    public Foo(FooId fooId, String name, FooProgress fooProgress) {
         this.fooId = fooId;
         this.name = name;
+        this.fooProgress = fooProgress;
     }
 
     public FooId getFooId() {
@@ -47,6 +49,17 @@ public class Foo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public FooProgress getFooProgress() {
+        return fooProgress;
+    }
+
+    public void setFooProgress(FooProgress fooProgress) {
+        this.fooProgress = fooProgress;
+        if (fooProgress != null) {
+            fooProgress.setFoo(this);
+        }
     }
 
     @Override
