@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
-import com.lesiak.test.usertypes.usertypes.FooIdUserType2;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -14,7 +13,7 @@ public class FooProgress {
 
     //@EmbeddedId
     @Id
-    @Type(FooIdUserType2.class)
+    @Type(FooIdUserType.class)
     private FooId fooId;
     //private String fooId;
 

@@ -3,7 +3,6 @@ package com.lesiak.test.usertypes.entities;
 import jakarta.persistence.*;
 
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
-import com.lesiak.test.usertypes.usertypes.FooIdUserType2;
 import org.hibernate.annotations.Type;
 
 import static jakarta.persistence.CascadeType.ALL;
@@ -17,7 +16,7 @@ import static jakarta.persistence.FetchType.EAGER;
 public class Foo {
 
     @Id
-    @Type(FooIdUserType2.class)
+    @Type(FooIdUserType.class)
     private FooId fooId;
     //@Id
     //private String fooId;

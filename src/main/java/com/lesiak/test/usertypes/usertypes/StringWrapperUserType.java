@@ -1,5 +1,6 @@
 package com.lesiak.test.usertypes.usertypes;
 
+import com.lesiak.test.usertypes.entities.StringWrapper;
 import io.hypersistence.utils.hibernate.type.DescriptorImmutableType;
 import org.hibernate.HibernateException;
 import org.hibernate.cache.MutableCacheKeyBuilder;
@@ -7,12 +8,12 @@ import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.type.descriptor.java.JavaTypedExpressible;
 import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
-public abstract class StringConstructorUserType<X>
-        extends DescriptorImmutableType<X, VarcharJdbcType, StringConstructorJavaType<X>>
+public abstract class StringWrapperUserType<X extends StringWrapper>
+        extends DescriptorImmutableType<X, VarcharJdbcType, StringWrapperJavaType<X>>
         implements JavaTypedExpressible<X> {
 
-    public StringConstructorUserType(Class<X> clazz) {
-        super(clazz, VarcharJdbcType.INSTANCE, new StringConstructorJavaType<>(clazz));
+    public StringWrapperUserType(Class<X> clazz) {
+        super(clazz, VarcharJdbcType.INSTANCE, new StringWrapperJavaType<>(clazz));
     }
 
     @Override

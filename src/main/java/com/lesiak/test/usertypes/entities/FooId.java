@@ -1,11 +1,9 @@
 package com.lesiak.test.usertypes.entities;
 
-import jakarta.persistence.Embeddable;
-
 import java.io.Serializable;
 import java.util.Objects;
 
-public class FooId implements Serializable {
+public class FooId implements StringWrapper, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,7 +18,8 @@ public class FooId implements Serializable {
         this.id = value;
     }
 
-    public String getId() {
+    @Override
+    public String getValue() {
         return id;
     }
 

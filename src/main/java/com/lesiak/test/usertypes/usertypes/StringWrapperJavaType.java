@@ -4,16 +4,17 @@ package com.lesiak.test.usertypes.usertypes;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import com.lesiak.test.usertypes.entities.StringWrapper;
 import org.hibernate.type.descriptor.WrapperOptions;
 import org.hibernate.type.descriptor.java.AbstractClassJavaType;
 
-class StringConstructorJavaType<X> extends AbstractClassJavaType<X> {
+class StringWrapperJavaType<X extends StringWrapper> extends AbstractClassJavaType<X> {
 
     private final Class<X> clazz;
     private final Constructor<X> constructor;
 
 
-    public StringConstructorJavaType(Class<X> clazz) {
+    public StringWrapperJavaType(Class<X> clazz) {
         super(clazz);
         try {
             this.clazz = clazz;
@@ -62,7 +63,7 @@ class StringConstructorJavaType<X> extends AbstractClassJavaType<X> {
             return null;
         }
 
-        return domainObject.toString();
+        return domainObject.getValue();
     }
 
     private X convertFromDatabaseColumn(String valueAsString) {
