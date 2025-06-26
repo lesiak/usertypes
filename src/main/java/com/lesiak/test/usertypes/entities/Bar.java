@@ -2,7 +2,7 @@ package com.lesiak.test.usertypes.entities;
 
 import jakarta.persistence.*;
 
-import com.lesiak.test.usertypes.usertypes.BarIdUserType;
+import com.lesiak.test.usertypes.usertypes.FooIdUserType;
 import org.hibernate.annotations.Type;
 
 /**
@@ -13,27 +13,27 @@ import org.hibernate.annotations.Type;
 public class Bar {
 
     @Id
-    @Type(BarIdUserType.class)
-    private BarId barId;
+    @Type(FooIdUserType.class)
+    private FooId fooId;
 
     @Column(name = "name") // Define the column name
     private String name;
 
     // No-arg constructor required by JPA
-    public Foo() {
+    public Bar() {
     }
 
-    public Bar(BarId id, String name) {
-        this.barId = id;
+    public Bar(FooId id, String name) {
+        this.fooId = id;
         this.name = name;
     }
 
-    public BarId getBarId() {
-        return barId;
+    public FooId getFooId() {
+        return fooId;
     }
 
-    public void setBarId(BarId barId) {
-        this.barId = barId;
+    public void setFooId(FooId fooId) {
+        this.fooId = fooId;
     }
 
     public String getName() {
@@ -47,7 +47,7 @@ public class Bar {
     @Override
     public String toString() {
         return "Bar{" +
-               "barId=" + barId +
+               "fooId=" + fooId +
                ", name='" + name + '\'' +
                '}';
     }

@@ -19,6 +19,11 @@ public class Foo {
     @Column(name = "name") // Define the column name
     private String name;
 
+    @OneToOne(optional = false)
+    @MapsId("bundleId")
+    @JoinColumn(name = "bundleid")
+    private Bar bar;
+
     // No-arg constructor required by JPA
     public Foo() {
     }
