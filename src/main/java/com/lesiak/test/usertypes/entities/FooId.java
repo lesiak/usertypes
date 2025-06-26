@@ -1,14 +1,21 @@
 package com.lesiak.test.usertypes.entities;
 
+import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@Embeddable
 public class FooId implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private String id;
+
+
+    public FooId( ) {
+
+    }
 
     public FooId(String value) {
         this.id = value;

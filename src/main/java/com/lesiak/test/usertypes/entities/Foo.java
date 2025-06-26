@@ -15,11 +15,11 @@ import static jakarta.persistence.FetchType.EAGER;
 @Table(name = "foos")
 public class Foo {
 
-//    @Id
-//    @Type(FooIdUserType.class)
-//    private FooId fooId;
-    @Id
-    private String fooId;
+    @EmbeddedId
+    //@Type(FooIdUserType.class)
+    private FooId fooId;
+    //@Id
+    //private String fooId;
 
     @Column(name = "name") // Define the column name
     private String name;
@@ -31,17 +31,17 @@ public class Foo {
     public Foo() {
     }
 
-    public Foo(String fooId, String name, FooProgress progress) {
+    public Foo(FooId fooId, String name, FooProgress progress) {
         this.fooId = fooId;
         this.name = name;
         this.progress = progress;
     }
 
-    public String getFooId() {
+    public FooId getFooId() {
         return fooId;
     }
 
-    public void setFooId(String id) {
+    public void setFooId(FooId id) {
         this.fooId = id;
     }
 

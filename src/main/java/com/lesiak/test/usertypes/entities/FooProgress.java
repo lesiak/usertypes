@@ -2,6 +2,8 @@ package com.lesiak.test.usertypes.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
 import org.hibernate.annotations.Type;
 
@@ -9,16 +11,16 @@ import org.hibernate.annotations.Type;
 @Table(name = "foo_progress")
 public class FooProgress {
 
-    @Id
+    @EmbeddedId
     //@Type(FooIdUserType.class)
-    //private FooId fooId;
-    private String fooId;
+    private FooId fooId;
+    //private String fooId;
 
     @Column(name = "name") // Define the column name
     private String name;
 
     @OneToOne(optional = false)
-    @MapsId("fooId")
+    @MapsId
    // @JoinColumn(name = "foo_id")
     private Foo foo;
 
@@ -26,17 +28,17 @@ public class FooProgress {
     public FooProgress() {
     }
 
-    public FooProgress(String id, String name, Foo foo) {
+    public FooProgress(FooId id, String name, Foo foo) {
         this.fooId = id;
         this.name = name;
         this.foo = foo;
     }
 
-    public String getFooId() {
+    public FooId getFooId() {
         return fooId;
     }
 
-    public void setFooId(String fooId) {
+    public void setFooId(FooId fooId) {
         this.fooId = fooId;
     }
 
@@ -62,5 +64,19 @@ public class FooProgress {
                "fooId=" + fooId +
                ", name='" + name + '\'' +
                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FooProgress that = (FooProgress) o;
+        return Objects.equals(fooId, that.fooId) && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fooId, name);
     }
 }

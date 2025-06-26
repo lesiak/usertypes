@@ -7,6 +7,7 @@ import java.util.List;
 import com.lesiak.test.usertypes.entities.Foo;
 import com.lesiak.test.usertypes.entities.FooId;
 import com.lesiak.test.usertypes.entities.FooProgress;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -22,10 +23,10 @@ public class FooRepositoryTest {
 
     @Test
     void aaa() {
-        //var fooId1 = new FooId("1");
-//        var fooId2 = new FooId("2");
-        var fooId1 = "foo1";
-        var fooId2 = "foo2";
+        var fooId1 = new FooId("1");
+        var fooId2 = new FooId("2");
+        //var fooId1 = "foo1";
+        //var fooId2 = "foo2";
         FooProgress fooProgress1 = new FooProgress(fooId1, "foo1Progress", null);
         FooProgress fooProgress2 = new FooProgress(fooId2, "foo2Progress", null);
 
@@ -38,8 +39,10 @@ public class FooRepositoryTest {
 
 
         List<Foo> all = fooRepository.findAll();
-        all.forEach(System.out::println);
-        fooProgressRepository.findAll().forEach(System.out::println);
+        var f1Result = all.get(0);
+        Assertions.assertEquals(fooProgress1, f1Result.getProgress());
+        //all.forEach(System.out::println);
+        //fooProgressRepository.findAll().forEach(System.out::println);
     }
 
     void aaa(Foo foo) {
