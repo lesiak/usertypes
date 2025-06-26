@@ -2,14 +2,18 @@ package com.lesiak.test.usertypes.entities;
 
 import jakarta.persistence.*;
 
+import com.lesiak.test.usertypes.usertypes.FooIdUserType;
+import org.hibernate.annotations.Type;
+
 /**
- * Entity class for Foo, using FooId as its embedded primary key.
+ * Entity class for Foo, using FooId as its embedded key.
  */
 @Entity
-@Table(name = "foos") // Define the table name
+@Table(name = "foos")
 public class Foo {
 
-    @EmbeddedId // Indicates that the primary key is an embedded object
+    @Id
+    @Type(FooIdUserType.class)
     private FooId id;
 
     @Column(name = "name") // Define the column name
