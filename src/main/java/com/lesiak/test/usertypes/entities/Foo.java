@@ -3,6 +3,7 @@ package com.lesiak.test.usertypes.entities;
 import jakarta.persistence.*;
 
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
+import com.lesiak.test.usertypes.usertypes.FooIdUserType2;
 import org.hibernate.annotations.Type;
 
 import static jakarta.persistence.CascadeType.ALL;
@@ -15,8 +16,8 @@ import static jakarta.persistence.FetchType.EAGER;
 @Table(name = "foos")
 public class Foo {
 
-    @EmbeddedId
-    //@Type(FooIdUserType.class)
+    @Id
+    @Type(FooIdUserType2.class)
     private FooId fooId;
     //@Id
     //private String fooId;
@@ -27,7 +28,6 @@ public class Foo {
     @OneToOne(mappedBy = "foo", fetch = EAGER, orphanRemoval = true, cascade = ALL)
     private FooProgress progress;
 
-    // No-arg constructor required by JPA
     public Foo() {
     }
 

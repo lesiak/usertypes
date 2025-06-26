@@ -5,14 +5,16 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
+import com.lesiak.test.usertypes.usertypes.FooIdUserType2;
 import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "foo_progress")
 public class FooProgress {
 
-    @EmbeddedId
-    //@Type(FooIdUserType.class)
+    //@EmbeddedId
+    @Id
+    @Type(FooIdUserType2.class)
     private FooId fooId;
     //private String fooId;
 
@@ -20,7 +22,7 @@ public class FooProgress {
     private String name;
 
     @OneToOne(optional = false)
-    @MapsId
+    @MapsId("fooId") //
    // @JoinColumn(name = "foo_id")
     private Foo foo;
 
