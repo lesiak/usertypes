@@ -24,7 +24,7 @@ import static jakarta.persistence.FetchType.EAGER;
 public class Foo {
 
     @Id
-    //@Type(FooIdUserType.class)
+    @Type(FooIdUserType.class)
     //@Convert(converter = FooIdConverter.class, disableConversion=true) //
     private FooId fooId;
 
