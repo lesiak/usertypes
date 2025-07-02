@@ -24,8 +24,7 @@ import static jakarta.persistence.FetchType.EAGER;
 public class Foo {
 
     @Id
-    //@Type(FooIdUserType.class)
-    @Convert(converter = FooIdConverter.class) //
+    @Type(FooIdUserType.class)
     private FooId fooId;
 
     @Column(name = "name") // Define the column name

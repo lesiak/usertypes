@@ -12,6 +12,7 @@ import java.util.Objects;
 
 
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.type.descriptor.WrapperOptions;
 import org.hibernate.type.descriptor.converter.spi.BasicValueConverter;
 import org.hibernate.type.descriptor.java.JavaType;
 import org.hibernate.usertype.EnhancedUserType;
@@ -40,18 +41,35 @@ public class FooIdUserType implements EnhancedUserType<FooId> {
         return x.hashCode();
     }
 
+//    @Override
+//    public FooId nullSafeGet(ResultSet rs, int position,
+//                              SharedSessionContractImplementor session, Object owner)
+//            throws SQLException {
+//        String string = rs.getString( position );
+//        return rs.wasNull() ? null : new FooId(string);
+//    }
+//
+//    @Override
+//    public void nullSafeSet(PreparedStatement st, FooId value, int index,
+//                            SharedSessionContractImplementor session)
+//            throws SQLException {
+//        if ( value == null ) {
+//            st.setNull(index, VARCHAR);
+//        }
+//        else {
+//            st.setString(index, value.getId());
+//        }
+//    }
+
+
     @Override
-    public FooId nullSafeGet(ResultSet rs, int position,
-                              SharedSessionContractImplementor session, Object owner)
-            throws SQLException {
-        String string = rs.getString( position );
+    public FooId nullSafeGet(ResultSet rs, int index, WrapperOptions options) throws SQLException {
+        String string = rs.getString( index );
         return rs.wasNull() ? null : new FooId(string);
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement st, FooId value, int index,
-                            SharedSessionContractImplementor session)
-            throws SQLException {
+    public void nullSafeSet(PreparedStatement st, FooId value, int index, WrapperOptions options) throws SQLException {
         if ( value == null ) {
             st.setNull(index, VARCHAR);
         }
