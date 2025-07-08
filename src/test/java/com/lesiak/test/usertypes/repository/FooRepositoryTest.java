@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 
 import java.util.List;
 
+import com.lesiak.test.usertypes.config.DatasourceProxyBeanPostProcessor;
 import com.lesiak.test.usertypes.entities.Foo;
 import com.lesiak.test.usertypes.entities.FooId;
 import com.lesiak.test.usertypes.entities.FooProgress;
@@ -12,10 +13,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TestTransaction;
 
 @DataJpaTest
+@Import(DatasourceProxyBeanPostProcessor.class)
 @AutoConfigureEmbeddedDatabase(type =  AutoConfigureEmbeddedDatabase.DatabaseType.POSTGRES, provider = AutoConfigureEmbeddedDatabase.DatabaseProvider.ZONKY)
 public class FooRepositoryTest {
 
