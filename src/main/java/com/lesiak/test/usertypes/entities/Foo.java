@@ -5,10 +5,12 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.lesiak.test.usertypes.usertypes.FooIdJavaType;
 import com.lesiak.test.usertypes.usertypes.FooIdUserType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.JavaType;
 import org.hibernate.annotations.Type;
 
 import static jakarta.persistence.CascadeType.ALL;
@@ -24,7 +26,9 @@ import static jakarta.persistence.FetchType.EAGER;
 public class Foo {
 
     @Id
-    @Type(FooIdUserType.class)
+    //@Type(FooIdUserType.class)
+    @JavaType(FooIdJavaType.class)
+    @Column(name = "foo_id", columnDefinition = "varchar(255)")
     private FooId fooId;
 
     @Column(name = "name") // Define the column name
